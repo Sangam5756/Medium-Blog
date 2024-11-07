@@ -1,34 +1,28 @@
 import React from "react";
 import BlogCard from "../components/BlogCard";
+import AppBar from "../components/AppBar";
+import useBlogs from "../hooks/useBlogs";
 
 const Blogs = () => {
+  const { loading, blogs } = useBlogs();
+
+  if (loading) return <div>loading.....</div>;
+
   return (
-    <div className="flex justify-center">
-      <div className="max-w-xl">
-        <BlogCard
-          authorName={"sangam"}
-          title={"first blog"}
-          content={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, velit! Provident inventore earum dignissimos sunt repellat cupiditate deleniti, nobis voluptatem voluptatibus ab modi recusandae amet quae ad dolore aut dolorum nostrum fugit, et veritatis praesentium quibusdam.  assumenda perferendis quos. Officia "
-          }
-          publishedDate={"07 Nov 2024"}
-        />
-        <BlogCard
-          authorName={"sangam"}
-          title={"first blog"}
-          content={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, velit! Provident inventore earum dignissimos sunt repellat cupiditate deleniti, nobis voluptatem voluptatibus ab modi recusandae amet quae ad dolore aut dolorum nostrum fugit, et veritatis praesentium quibusdam.  assumenda perferendis quos. Officia "
-          }
-          publishedDate={"07 Nov 2024"}
-        />
-        <BlogCard
-          authorName={"sangam"}
-          title={"first blog"}
-          content={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, velit! Provident inventore earum dignissimos sunt repellat cupiditate deleniti, nobis voluptatem voluptatibus ab modi recusandae amet quae ad dolore aut dolorum nostrum fugit, et veritatis praesentium quibusdam.  assumenda perferendis quos. Officia "
-          }
-          publishedDate={"07 Nov 2024"}
-        />
+    <div>
+      <AppBar />
+      <div className="flex justify-center">
+        <div>
+          {blogs.map((e) => (
+            <BlogCard
+            id={e.id}
+              authorName={e?.author?.name || "Anonymous"}
+              title={e?.title}
+              content={e?.content}
+              publishedDate={"07 Nov 2024"}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -125,9 +125,20 @@ blogRouter.get("/bulk", async (c) => {
 
     console.log("inside the blog")
     try {
-        const post = await prisma.post.findMany()
+        const post = await prisma.post.findMany({
+            select:{
+                content:true,
+                title:true,
+                id:true,
+                author:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        })
         console.log("inside the blog",post)
-        return c.json({ post:post })
+        return c.json({ post })
 
     } catch (e) {
         c.status(411);
