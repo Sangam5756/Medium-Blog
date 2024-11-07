@@ -1,9 +1,18 @@
-import React from 'react'
+import Auth from "../components/Auth";
+import Label from "../components/Label";
 
 const Signup = () => {
   return (
-    <div>Signup</div>
-  )
-}
+    <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div>
+        <Auth type="signup"/>
+      </div>
 
-export default Signup
+      <div className="hidden lg:block">
+        <Label />
+      </div>
+    </div>
+  );
+};
+
+export default Signup;
