@@ -1,4 +1,3 @@
-import React from "react";
 
 const Avatar = ({ name, size="small"}: { name: string; size?: "small" | "big" }) => {
   return (

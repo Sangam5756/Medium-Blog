@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "./Avatar";
 import Dot from "./Dot";
 import { Link } from "react-router-dom";

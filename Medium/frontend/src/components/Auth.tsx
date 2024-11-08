@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signinInput, signupInput } from "@sangam5756/medium-common";
+import {  signupInput } from "@sangam5756/medium-common";
 import LabelInput from "./LabelInput";
 import axios from "axios";
 import { BACKEND_URL } from "../config";

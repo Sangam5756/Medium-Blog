@@ -1,4 +1,4 @@
-import React from "react";
+
 import Dot from "./Dot";
 import Avatar from "./Avatar";
 

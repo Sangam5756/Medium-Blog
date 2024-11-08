@@ -6,7 +6,7 @@ import Blogs from "./pages/Blogs";
 import Publish from "./pages/Publish";
 import AppBar from "./components/AppBar";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {

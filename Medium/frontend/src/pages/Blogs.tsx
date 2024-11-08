@@ -1,5 +1,4 @@
 import BlogCard from "../components/BlogCard";
-import AppBar from "../components/AppBar";
 import useBlogs from "../hooks/useBlogs";
 import Shimmer from "../components/Shimmer";
 import { useEffect } from "react";
