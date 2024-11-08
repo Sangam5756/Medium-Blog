@@ -1,9 +1,10 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {  signupInput } from "@sangam5756/medium-common";
+import { signupInput } from "@sangam5756/medium-common";
 import LabelInput from "./LabelInput";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { toast } from "react-toastify";
 
 const Auth = ({ type }: { type: "signup" | "signin" }) => {
   const [postInputs, setPostInputs] = useState<signupInput>({
@@ -19,9 +20,11 @@ const Auth = ({ type }: { type: "signup" | "signin" }) => {
         postInputs
       );
       const token = response.data.jwt;
-      localStorage.setItem("token", token);
-      navigate("/blogs");
-      console.log(token);
+      if (token) {
+        localStorage.setItem("token", token);
+        toast.success("Login Successfully");
+        navigate("/blogs");
+      }
     } catch (e) {
       console.log("error occured", e);
       alert("Error Occured");
