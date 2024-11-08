@@ -1,21 +1,33 @@
-import React from "react";
 import BlogCard from "../components/BlogCard";
 import AppBar from "../components/AppBar";
 import useBlogs from "../hooks/useBlogs";
+import Shimmer from "../components/Shimmer";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
   const { loading, blogs } = useBlogs();
 
-  if (loading) return <div>loading.....</div>;
-
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/signin");
+    }
+  }, []);
+  if (loading)
+    return (
+      <div>
+        <Shimmer />
+      </div>
+    );
   return (
     <div>
-      <AppBar />
       <div className="flex justify-center">
         <div>
           {blogs.map((e) => (
             <BlogCard
-            id={e.id}
+              id={e.id}
               authorName={e?.author?.name || "Anonymous"}
               title={e?.title}
               content={e?.content}
